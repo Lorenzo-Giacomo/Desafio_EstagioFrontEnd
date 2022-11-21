@@ -1,0 +1,18 @@
+.header {position: absolute;
+  height: 69px;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+
+  background: #F5F5F5;
+
+  box-shadow: 0px 4px 15px 1px rgba(0, 0, 0, 0.1);
+
+  img {
+    position: absolute;
+    width: 226.55px;
+    height: 23px;
+    left: calc(50% - 226.55px/2 + 0.28px);
+    top: 23px;
+  }
+}

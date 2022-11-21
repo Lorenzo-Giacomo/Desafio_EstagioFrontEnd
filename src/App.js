@@ -1,5 +1,7 @@
+import './styles/global.scss'
+import AllRoutes from './routes'
 function App() {
-  return <h1>Hello Industriall!</h1>
+  return <AllRoutes />
 }
 
 export default App

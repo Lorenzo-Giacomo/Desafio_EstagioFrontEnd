@@ -1,0 +1,100 @@
+.mainContainer {
+  position: absolute;
+  width: 946px;
+  left: calc(50% - 946px/2);
+  top: 102px;
+
+  header {
+    width: 95%;
+    margin-left: 1.5rem;
+    p {
+      font-size: 20px;
+      line-height: 24.41px;
+      color: var(--darkgray);
+    }
+  }
+}
+
+.formContainer {
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0px 4px 15px 1px rgba(0, 0, 0, 0.1);
+  padding: 16px 32px;
+
+  h2 {
+    color: var(--mediumgray);
+  }
+
+  .identidyContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+    .input {
+      border-radius: 5px;
+      position: relative;
+      border: 1px solid var(--lightgray);
+
+      input {
+        width: 100%;
+        border: 0;
+      } 
+
+      label {
+        background-color: transparent;
+          position: absolute;
+          top: 7px;
+          left: 15px;
+          bottom: 0;
+          transition: .3s;
+          pointer-events: none;
+      }
+    }
+    .input:hover, .input:focus-within {
+      border-color: #00D5F2;
+      border-width: 2px
+    }
+
+    .input input:focus, .input:hover input {
+      color: var(--darkgray);
+    }
+
+    .input:hover label  {
+      color: #00D5F2;
+    }
+
+    .input:focus-within label, 
+    .input input:not(:placeholder-shown) ~ label {
+      top: -12px;
+      bottom: auto;
+      background-color: var(--white);
+      font-size: 14px;
+    }
+
+    .dateBox {
+      display: flex;
+    }
+    
+
+  }
+
+  .buttonsContainer {
+    display: flex;
+    gap: 1rem;
+    position: relative;
+    justify-content: right;
+
+    :first-child {
+      background-color: var(--lightgray);
+      color: var(--darkgray);
+      border-radius: 5px;
+    }
+    button {
+      background-color: var(--green);
+      color: #E4E6F0;
+      padding: 10px 21px 8px;
+    }
+  }
+
+  
+}

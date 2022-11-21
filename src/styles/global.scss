@@ -1,0 +1,66 @@
+:root {
+  --darkblue: #1E2251;
+  --lightblue: #4FC3F7;
+  --lightgray: #C0C1C6;
+  --mediumgray: #7B7B7B;
+  --darkgray: #5C5958;
+  --green: #44C08A;
+  --black: #312F2F;  
+  --white: #F5F5F5;   
+}
+
+* {
+  // margin: 0;
+  // padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e4e6f0;
+  overflow: auto;
+  font: 400 14px Calibri, sans-serif;
+  color: var(--darkgray);
+}
+
+button {
+  font: 700 16px Calibri, normal;
+  letter-spacing: 0.03em;
+  line-height: 20px;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+h1 {
+  font: 700 24px Calibri, sans-serif;
+  line-height: 29.3px;
+  color: var(--darkblue);
+}
+
+h2 {
+  font: 700 20px Calibri, sans-serif;
+  line-height: 24.41px;
+  color: var(--darkblue);
+
+}
+
+input, select {
+  font: 400 16px Calibri, sans-serif;
+  line-height: 19.53px;
+  color: var(--mediumgray);
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid var(--lightgray);
+  outline: none;
+  background: transparent;
+
+}
+
+label {
+  font: 400 16px Calibri, sans-serif;
+  line-height: 19.53px;
+  color: var(--mediumgray);
+}
+
