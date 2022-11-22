@@ -3,14 +3,17 @@ import { Link } from "react-router-dom"
 import { Header } from "../../components/Header"
 import api from "../../services/api"
 import styles from './styles.module.scss'
+import { config } from "../../services/auth"
 
 export function ProceedingsList() {
 
-  const tokenAuthorization = localStorage.getItem('@APP-AUTHORIZATION')
+// contexto para authenticação
+  // const tokenAuthorization = localStorage.getItem('@APP-AUTHORIZATION')
   useEffect(() => {
-    let config = { headers: { Authorization: `Bearer ${tokenAuthorization}` } }
+    // console.log(tokenAuthorization)
+    // let config = { headers: { Authorization: `Bearer ${tokenAuthorization}` } }
 
-    api.get('/atas', config).then(response => {
+    api.get('/Atas', config).then(response => {
       console.log(response.data)
     })
   })
@@ -19,15 +22,20 @@ export function ProceedingsList() {
     <div>
       <Header/>
       <div className={styles.mainContainer}>
+
         <section className={styles.topInfos}>
+
           <div>
             <h1>Atas de Reunião</h1>
             <p>Estas são as atas das últimas reuniões</p>
           </div>
+
           <Link to="/atas-form">
           <button>+ Nova ATA</button>
           </Link>
+
         </section>
+
         <section className={styles.listContainer}>
           {/* // separar em componentes */}
           <div className={styles.OKRsFollowing}>
