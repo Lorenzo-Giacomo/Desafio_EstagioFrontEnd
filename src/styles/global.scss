@@ -10,8 +10,8 @@
 }
 
 * {
-  // margin: 0;
-  // padding: 0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -20,6 +20,7 @@ body {
   overflow: auto;
   font: 400 14px Calibri, sans-serif;
   color: var(--darkgray);
+  height: 100vh;
 }
 
 button {

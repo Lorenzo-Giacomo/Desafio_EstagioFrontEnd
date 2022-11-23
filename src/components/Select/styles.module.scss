@@ -1,0 +1,36 @@
+.select {
+  border-radius: 5px;
+  position: relative;
+  border: 1px solid var(--lightgray);
+
+  label {
+    background-color: transparent;
+      position: absolute;
+      top: 8px;
+      left: 15px;
+      bottom: 0;
+      transition: .3s;
+      pointer-events: none;
+  }
+
+}
+
+.select:focus-within label {
+      top: -12px;
+      bottom: auto;
+      background-color: var(--white);
+      font-size: 14px;
+    }
+
+.select:hover, .select:focus-within {
+  border-color: #00D5F2;
+  border-width: 1px
+}
+
+.select input:focus, .select:hover input {
+  color: var(--darkgray);
+}
+
+.select:hover label  {
+  color: #00D5F2;
+}

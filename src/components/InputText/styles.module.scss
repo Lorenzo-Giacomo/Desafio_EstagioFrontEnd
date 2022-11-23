@@ -1,0 +1,44 @@
+.input {
+  border-radius: 5px;
+  position: relative;
+  border: 1px solid var(--lightgray);
+
+  input {
+    width: 100%;
+    border: 0;
+  } 
+
+  label {
+    background-color: transparent;
+      position: absolute;
+      top: 8px;
+      left: 15px;
+      bottom: 0;
+      transition: .3s;
+      pointer-events: none;
+  }
+}
+
+.input:hover, .input:focus-within {
+  border-color: #00D5F2;
+}
+
+.input:focus-within {
+  border-width: 3px
+}
+
+.input input:focus, .input:hover input {
+  color: var(--darkgray);
+}
+
+.input:hover label  {
+  color: #00D5F2;
+}
+
+.input:focus-within label, 
+.input input:not(:placeholder-shown) ~ label {
+      top: -12px;
+      bottom: auto;
+      background-color: var(--white);
+      font-size: 14px;
+    }

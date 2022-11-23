@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { Header } from "../../components/Header"
 import styles from './styles.module.scss'
-import Select from 'react-select'
 import { Link } from "react-router-dom"
 import api from "../../services/api"
 import { config } from "../../services/auth"
 import { DynamicFields } from "../../components/MeetingFields"
-
+import { InputText } from "../../components/InputText"
+import { InputDate } from "../../components/InputDate" 
+import { SelectField } from "../../components/Select"
 
 export function ProceedingsForm() {
   const [titulo, setTitulo] = useState("")
@@ -18,6 +19,8 @@ export function ProceedingsForm() {
 
   const [placesList, setPlacesList] = useState([])
   const [typesOfMeetingsList, setTypesOfMeetingsList] = useState([])
+
+  console.log(placesList)
 
   useEffect(() => {
     api.get('/Locais', config).then(response => {
@@ -34,7 +37,6 @@ export function ProceedingsForm() {
           return { value: typeOfMeeting.id, label: typeOfMeeting.nome }
         })
       )
-      // console.log(response.data)
     })
   }, [])
 
@@ -59,67 +61,60 @@ export function ProceedingsForm() {
 
             <div className={styles.identidyContainer}>
 
-              <div className={styles.input}>
-                <input 
-                  type="text" 
-                  id="titulo" 
-                  placeholder=" "
-                  onChange={e => setTitulo(e.target.value)}
-                />
-                <label for="titulo">Título *</label>
-              </div>
+              <InputText
+                id={"titulo"}
+                type={"text"}
+                label={"Título *"}
+                placeholder={" "}
+                onChange={e => setTitulo(e.target.value)}
+              />
               
-              <div className={styles.select}>
-                {/* ver doc: https://react-select.com/styles */}
-                <Select 
-                  placeholder=" "
-                  options={placesList}
-                  onChange={e => setLocalId(e.value)}
-                />
-                <label for="">Local *</label>
-              </div>
+              <SelectField
+                id={"local"}
+                label={"Local *"}
+                options={placesList}
+                onChange={e => setLocalId(e.value)}
+              />
 
               <div className={styles.dateBox}>
-                <div className={styles.dateTime}>
-                  <input 
-                    type="datetime-local"  
-                    id="dataInicio"
-                    placeholder=" " 
-                    required
-                    onChange={e => setDataInicio(e.target.value)}
-                    />
-                  <label for="dataInicio">Data e Horário de Início *</label>
-                </div>
-                <div className={styles.dateTime}>
-                  <input 
-                    type="datetime-local"  
-                    id="dataFim" 
-                    placeholder=" " 
-                    required
-                    onChange={e => setDataFim(e.target.value)}
-                    />
-                  <label for="dataFim">Data e Horário de Fim </label>
-                </div>
-              </div>
-
-              <div className={styles.select}>
-                {/* ver doc: https://react-select.com/styles */}
-                <Select 
-                  placeholder=" "
-                  options={typesOfMeetingsList}
-                  onChange={e => setTipoReuniaoId(e.value)}
-
+                <InputDate
+                  id={"dataInicio"}
+                  type={"datetime-local"}
+                  label={"Data e Horário de Início *"}
+                  placeholder={" "}
+                  onChange={e => setDataInicio(e.target.value)}
+                  required
                 />
-                <label for="">Tipo de Reunião *</label>
+                <InputDate
+                  id={"dataFim"}
+                  type={"datetime-local"}
+                  label={"Data e Horário de Fim"}
+                  placeholder={" "}
+                  onChange={e => setDataInicio(e.target.value)}
+                  required
+                />
               </div>
+
+              <SelectField
+                id={"reuniao"}
+                label={"Tipo de Reunião *"}
+                options={typesOfMeetingsList}
+                onChange={e => setTipoReuniaoId(e.value)}
+              />
 
             </div>
 
-            <h2>Conteúdo da Reunião</h2>
             <div className={styles.meetingContent}>
-              <DynamicFields 
-                id={tipoReuniaoId}
-              />
+            <h2>Conteúdo da Reunião</h2> 
+              {tipoReuniaoId === 0 ? (
+                <div className={styles.empityMeeting}>
+                  <span>Selecione o Tipo de Reunião</span>
+                </div>
+              ) : (
+                <DynamicFields 
+                  id={tipoReuniaoId}
+                />
+              )}
             </div>
 
             <footer className={styles.buttonsContainer}>

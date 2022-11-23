@@ -2,17 +2,19 @@
   position: absolute;
   width: 946px;
   left: calc(50% - 946px/2);
-  top: 102px;
+  top: 6rem;
 }
 
 .topInfos {
   margin: auto;
+  margin-bottom: 1rem;
   width: 95%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   p {
+    margin-top: 0.5rem;
     font-size: 20px;
     line-height: 24.41px;
     color: var(--darkgray);
