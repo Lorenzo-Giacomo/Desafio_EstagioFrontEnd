@@ -13,6 +13,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  letter-spacing: 0.01em;
 }
 
 body {
@@ -45,6 +46,18 @@ h2 {
   line-height: 24.41px;
   color: var(--darkblue);
 
+}
+
+h4 {
+  font: 700 16px Calibri, sans-serif;
+  line-height: 20px;
+  color: var(--black);
+}
+
+p {
+  font: 400 14px Calibri, sans-serif;
+  line-height: 17px;
+  color: var(--darkgray);
 }
 
 input, select {
