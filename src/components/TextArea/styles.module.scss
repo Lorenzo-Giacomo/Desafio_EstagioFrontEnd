@@ -1,0 +1,27 @@
+.textarea {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-left: 1rem;
+    margin-bottom: .5rem;
+  }
+
+  textarea {
+    resize: none;
+    outline-color : var(--aquablue);
+    border-radius: 5px;
+    border: 1px solid var(--lightgray);
+    padding: .8rem;
+
+  }
+
+  textarea:hover {
+    border-color: var(--aquablue) ;
+  }
+}
+
+.textarea:hover label, .textarea:focus-within label {
+  color: var(--aquablue);
+}
+

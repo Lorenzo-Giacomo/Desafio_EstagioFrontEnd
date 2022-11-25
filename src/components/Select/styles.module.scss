@@ -15,12 +15,14 @@
 
 }
 
-.select:focus-within label {
+.select:focus-within label
+    {
       top: -12px;
       bottom: auto;
       background-color: var(--white);
       font-size: 14px;
     }
+
 
 .select:hover, .select:focus-within {
   border-color: #00D5F2;
@@ -31,6 +33,6 @@
   color: var(--darkgray);
 }
 
-.select:hover label  {
+.select:hover label, .select:focus-within label  {
   color: #00D5F2;
 }

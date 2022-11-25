@@ -1,6 +1,7 @@
 :root {
   --darkblue: #1E2251;
   --lightblue: #4FC3F7;
+  --aquablue: #00D5F2;
   --lightgray: #C0C1C6;
   --mediumgray: #7B7B7B;
   --darkgray: #5C5958;
@@ -19,7 +20,7 @@ body {
   background-color: #e4e6f0;
   overflow: auto;
   font: 400 14px Calibri, sans-serif;
-  color: var(--darkgray);
+  color: var(--black);
   height: 100vh;
 }
 
@@ -50,13 +51,18 @@ h2 {
 input, select {
   font: 400 16px Calibri, sans-serif;
   line-height: 19.53px;
-  color: var(--mediumgray);
+  color: var(--black);
   padding: 0.5rem 0.5rem;
   border-radius: 5px;
   border: 1px solid var(--lightgray);
   outline: none;
   background: transparent;
+}
 
+textarea {
+  font: 400 16px Calibri, sans-serif;
+  color: var(--black);
+  background-color: transparent;
 }
 
 label {

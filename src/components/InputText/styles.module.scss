@@ -24,14 +24,14 @@
 }
 
 .input:focus-within {
-  border-width: 3px
+  border-width: 2px
 }
 
 .input input:focus, .input:hover input {
   color: var(--darkgray);
 }
 
-.input:hover label  {
+.input:hover label, .input:focus-within label  {
   color: #00D5F2;
 }
 

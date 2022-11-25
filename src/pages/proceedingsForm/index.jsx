@@ -20,8 +20,6 @@ export function ProceedingsForm() {
   const [placesList, setPlacesList] = useState([])
   const [typesOfMeetingsList, setTypesOfMeetingsList] = useState([])
 
-  console.log(placesList)
-
   useEffect(() => {
     api.get('/Locais', config).then(response => {
       setPlacesList(
@@ -60,12 +58,9 @@ export function ProceedingsForm() {
             <h2>Identificação</h2>
 
             <div className={styles.identidyContainer}>
-
               <InputText
                 id={"titulo"}
-                type={"text"}
                 label={"Título *"}
-                placeholder={" "}
                 onChange={e => setTitulo(e.target.value)}
               />
               
@@ -79,19 +74,13 @@ export function ProceedingsForm() {
               <div className={styles.dateBox}>
                 <InputDate
                   id={"dataInicio"}
-                  type={"datetime-local"}
                   label={"Data e Horário de Início *"}
-                  placeholder={" "}
                   onChange={e => setDataInicio(e.target.value)}
-                  required
                 />
                 <InputDate
                   id={"dataFim"}
-                  type={"datetime-local"}
                   label={"Data e Horário de Fim"}
-                  placeholder={" "}
                   onChange={e => setDataInicio(e.target.value)}
-                  required
                 />
               </div>
 
@@ -101,7 +90,6 @@ export function ProceedingsForm() {
                 options={typesOfMeetingsList}
                 onChange={e => setTipoReuniaoId(e.value)}
               />
-
             </div>
 
             <div className={styles.meetingContent}>

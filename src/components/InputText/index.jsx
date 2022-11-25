@@ -1,10 +1,10 @@
 import styles from './styles.module.scss'
 
-export function InputText({ label, name, className, placeholder, type, ...rest }) {
+export function InputText({ label, id, ...rest }) {
   return (
       <div className={styles.input}>
-        <input id={name} type={type} placeholder={placeholder} {...rest} />
-        <label for={name}>{label}</label>
+        <input id={id} type="text" placeholder=" " {...rest} />
+        <label for={id}>{label}</label>
       </div>
   )
 }

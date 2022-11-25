@@ -11,12 +11,12 @@
 
   label {
     background-color: transparent;
-      position: absolute;
-      top: 8px;
-      left: 15px;
-      bottom: 0;
-      transition: .3s;
-      pointer-events: none;
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    bottom: 0;
+    transition: .3s;
+    pointer-events: none;
   }
 }
 
@@ -24,7 +24,7 @@
   color: var(--darkgray);
 }
 
-.dateTime:hover label  {
+.dateTime:hover label, .dateTime:focus-within label  {
   color: #00D5F2;
 }
 
@@ -32,7 +32,7 @@
   border-color: #00D5F2;
 }
 .dateTime:focus-within {
-  border-width: 3px
+  border-width: 2px
 }
 
 .dateTime:focus-within label,

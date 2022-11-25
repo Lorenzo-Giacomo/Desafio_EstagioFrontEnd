@@ -1,10 +1,10 @@
 import styles from './styles.module.scss'
 
-export function InputDate({ label, name, className, placeholder, type, ...rest }) {
+export function InputDate({ label, id}) {
   return (
       <div className={styles.dateTime}>
-        <input id={name} type={type} placeholder={placeholder} {...rest} />
-        <label for={name}>{label}</label>
+        <input id={id} type="datetime-local" placeholder=" " required />
+        <label for={id}>{label}</label>
       </div>
   )
 }

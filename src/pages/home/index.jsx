@@ -37,7 +37,7 @@ export function Home() {
             onChange={e => setUserName(e.target.value)}
           />
           <InputText 
-            type={"password"}
+            type="password"
             id={'senha'}
             placeholder={" "}
             label={"Senha *"}
