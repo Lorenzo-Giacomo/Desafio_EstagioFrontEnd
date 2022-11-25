@@ -1,44 +1,27 @@
-import Select from 'react-select'
+import React, { useState } from 'react'
 import styles from './styles.module.scss'
 
-export function SelectField({id, label, options, ...rest}) {
-  
-  const colourStyles = {
-    control: (baseStyles, { isFocused } ) => {
-      return {
-        ...baseStyles,
-        font: " 400 16px Calibri, sans-serif;",
-        color: '#312F2F',
-        border : isFocused
-        ? "1px solid #00D5F2"
-        : 0,
-        boxShadow: isFocused
-          ? 'none'
-          : 'none',
-        backgroundColor: "transparent",
+export function SelectField({id, label, options, errorMessage, ...rest}) {
+  const [focused, setFocused] = useState(false)
 
-        borderColor : isFocused 
-        ? '#00D5F2'
-        : 'transparent',
-        
-        "&:hover": {
-          borderColor: "#00D5F2",
-        }
-
-      }
-    }
-  };
   return (
     <div className={styles.select}>
-      <Select
-        className={styles.reactSelect}
+      <select
         id={id}
         placeholder=" "
-        styles={ colourStyles }
         options={options}
+        onFocus={() => setFocused(false)} 
+        onBlur={()=> setFocused(true)} 
+        focused={focused.toString()} 
         {...rest}
-      />
+      >
+        <option value="" selected disabled></option>
+          {options.map(option =>(
+            <option value={option.value}>{option.label}</option>
+          ))}
+      </select>  
       <label htmlFor={id}>{label}</label>
+      <span>{errorMessage}</span> 
     </div>
 
   )

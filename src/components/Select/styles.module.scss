@@ -1,38 +1,64 @@
 .select {
-  border-radius: 5px;
   position: relative;
-  border: 1px solid var(--lightgray);
+  
+  select {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid var(--lightgray);
+ 
+    option {
+      font: 400 16px Calibri, sans-serif;
+      line-height: 19px;
+      color: var(--darkgray);
+      border: none;
+    }
+  }
+  
 
   label {
     background-color: transparent;
-      position: absolute;
-      top: 8px;
-      left: 15px;
-      bottom: 0;
-      transition: .3s;
-      pointer-events: none;
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    bottom: 0;
+    transition: .3s;
+    pointer-events: none;
   }
 
+  span {
+    display: none;
+    padding: 2px;
+  }
 }
 
-.select:focus-within label
-    {
-      top: -12px;
-      bottom: auto;
-      background-color: var(--white);
-      font-size: 14px;
-    }
-
-
-.select:hover, .select:focus-within {
-  border-color: #00D5F2;
-  border-width: 1px
+.select select:invalid[focused="true"] ~ span {
+  position: absolute;
+  display: block;
+  color: red;
 }
 
-.select input:focus, .select:hover input {
-  color: var(--darkgray);
+.select select:invalid[focused="true"] {
+  border-color: red;
 }
+
 
 .select:hover label, .select:focus-within label  {
   color: #00D5F2;
+}
+
+.select select:hover, .select select:focus-within {
+  border-color: #00D5F2;
+}
+
+.select select:focus-within {
+  border-width: 2px
+}
+
+.select:focus-within label,
+.select select:valid ~ label
+{
+  top: -12px;
+  bottom: auto;
+  background-color: var(--white);
+  font-size: 14px;
 }
