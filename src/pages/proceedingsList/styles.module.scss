@@ -21,7 +21,6 @@
   }
   
   button {
-    // fazer hover crescendo e com sombra
     background-color: var(--lightblue);
     width: 118px;
     height: 33px;
@@ -36,4 +35,35 @@
   border-radius: 5px;
   box-shadow: 0px 4px 15px 1px rgba(0, 0, 0, 0.1);
   padding: 16px 32px;
+
+  .atasList {
+    margin: 1.5rem 0;
+
+    .ataCard {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--lightgray);
+      padding-left: .8rem;
+      padding-right: .8rem;
+      padding-bottom: 1rem;
+
+      .ataInfos {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .ataIcons {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        span {
+          cursor: pointer;
+        }
+      }
+    }
+
+  }
 }
