@@ -5,12 +5,17 @@
     width: 100%;
     border-radius: 5px;
     border: 1px solid var(--lightgray);
- 
+
     option {
       font: 400 16px Calibri, sans-serif;
       line-height: 19px;
       color: var(--darkgray);
       border: none;
+      margin: 10px;
+
+      &:hover {
+      background-color: #00D5F2;
+      }
     }
   }
   

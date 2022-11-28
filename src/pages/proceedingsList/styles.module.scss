@@ -38,6 +38,9 @@
 
   .atasList {
     margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
 
     .ataCard {
       display: flex;

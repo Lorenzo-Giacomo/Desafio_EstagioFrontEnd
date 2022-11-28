@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
 
-export function InputDate({ label, id , value, errorMessage,  isMandatory, ...rest}) {
+export function InputDate({ label, id , value, errorMessage,  ismandatory, ...rest}) {
 
   const [focused, setFocused] = useState(false)
 
@@ -15,7 +15,7 @@ export function InputDate({ label, id , value, errorMessage,  isMandatory, ...re
           onFocus={() => setFocused(false)} 
           onBlur={()=> setFocused(true)} 
           focused={focused.toString()} 
-          isMandatory={isMandatory}
+          ismandatory={ismandatory}
           {...rest}
           />
         <label htmlFor={id}>{label}</label>

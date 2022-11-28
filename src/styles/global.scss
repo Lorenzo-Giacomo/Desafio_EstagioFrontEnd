@@ -7,7 +7,8 @@
   --darkgray: #5C5958;
   --green: #44C08A;
   --black: #312F2F;  
-  --white: #F5F5F5;   
+  --white: #F5F5F5;  
+  --lightred: #fe5d5d 
 }
 
 * {
@@ -30,10 +31,10 @@ button {
   letter-spacing: 0.03em;
   line-height: 20px;
   text-transform: uppercase;
-  border: 0;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-
+  outline: none;
 }
 
 h1 {

@@ -17,7 +17,6 @@ export function Home() {
       const response = await api.post('/login', {userName, password})
       provider.signin(response.data)
       navigate('/atas-list')
-      // console.log(response.data)
     } catch {
       alert('Login ou Senha Incorretos, digite novamente')
     }
@@ -34,6 +33,7 @@ export function Home() {
             id={'login'}
             placeholder={" "}
             label={"Login *"}
+            value={userName}
             onChange={e => setUserName(e.target.value)}
           />
           <InputText 
@@ -41,6 +41,7 @@ export function Home() {
             id={'senha'}
             placeholder={" "}
             label={"Senha *"}
+            value={password}
             onChange={e=> setPassword(e.target.value)}
             />
         </div>

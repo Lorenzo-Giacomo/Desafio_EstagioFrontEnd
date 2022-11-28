@@ -30,7 +30,7 @@
   color: red;
 }
 
-.input input:invalid[focused="true"] {
+.input input:invalid[focused="true"][isMandatory="true"] {
   border-color: red;
 }
 

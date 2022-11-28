@@ -7,6 +7,7 @@ export function SelectField({id, label, options, errorMessage, ...rest}) {
   return (
     <div className={styles.select}>
       <select
+        defaultValue=""
         id={id}
         placeholder=" "
         options={options}
@@ -15,9 +16,9 @@ export function SelectField({id, label, options, errorMessage, ...rest}) {
         focused={focused.toString()} 
         {...rest}
       >
-        <option value="" selected disabled></option>
-          {options.map(option =>(
-            <option value={option.value}>{option.label}</option>
+        <option value=""  disabled></option>
+          {options.map((option, index) =>(
+            <option key={index} value={option.value}>{option.label}</option>
           ))}
       </select>  
       <label htmlFor={id}>{label}</label>

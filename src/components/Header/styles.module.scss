@@ -16,4 +16,20 @@
     left: calc(50% - 226.55px/2 + 0.28px);
     top: 23px;
   }
+
+  .logout {
+    position: absolute;
+    height: 69px;
+    right: 5rem;
+    // top: 0px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+			cursor: pointer;
+			text-decoration: underline;
+			color: var(--lightred);
+		}
+  }
+
 }

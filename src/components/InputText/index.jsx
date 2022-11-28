@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
 
-export function InputText({ label, id, value, errorMessage,...rest }) {
+export function InputText({ label, id, value, errorMessage, isMandatory, ...rest }) {
 
   const [focused, setFocused] = useState(false)
   return (
@@ -14,8 +14,8 @@ export function InputText({ label, id, value, errorMessage,...rest }) {
             onFocus={() => setFocused(false)} 
             onBlur={()=> setFocused(true)} 
             focused={focused.toString()} 
+            ismandatory={isMandatory}
             {...rest}  
-            
             />
           <label htmlFor={id}>{label}</label>
           <span>{errorMessage}</span> 

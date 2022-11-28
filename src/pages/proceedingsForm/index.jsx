@@ -1,36 +1,23 @@
 import React, { useEffect, useState } from "react"
-import { Header } from "../../components/Header"
-import styles from './styles.module.scss'
-import { Link } from "react-router-dom"
-import api from "../../services/api"
+import { Link, useNavigate } from "react-router-dom"
 import { config } from "../../services/auth"
+import { Header } from "../../components/Header"
 import { DynamicFields } from "../../components/MeetingFields"
 import { InputText } from "../../components/InputText"
 import { InputDate } from "../../components/InputDate" 
 import { SelectField } from "../../components/Select"
-// import { useForm } from 'react-hook-form'
-
+import styles from './styles.module.scss'
+import api from "../../services/api"
 
 export function ProceedingsForm() {
   const [titulo, setTitulo] = useState("")
-  // console.log(titulo)
   const [dataInicio, setDataInicio] = useState("")
-  console.log(dataInicio)
   const [dataFim, setDataFim] = useState("")
   const [localId, setLocalId] = useState(0)
-  // console.log(localId)
   const [tipoReuniaoId, setTipoReuniaoId] = useState(0)
-  // console.log(tipoReuniaoId)
-
-  const [camposAtaReuniao, setCamposAtaReuniao] = useState([])
-
   const [placesList, setPlacesList] = useState([])
-  console.log(placesList)
   const [typesOfMeetingsList, setTypesOfMeetingsList] = useState([])
-
-  // const { watch } = useForm()
-  // const title = watch('titulo')
-  
+  const [camposAtaReuniao, setCamposAtaReuniao] = useState([])
 
   useEffect(() => {
     api.get('/Locais', config).then(response => {
@@ -49,7 +36,7 @@ export function ProceedingsForm() {
       )
     })
   }, [])
-
+  
   const dataValid = dataInicio === ""
   const titleValid = titulo === ""
   const localValid = localId === 0
@@ -57,11 +44,27 @@ export function ProceedingsForm() {
 
   const isSubmitDisabled = !dataValid && !titleValid && !localValid && !typeOfMeetingValid ? false : true
 
-
+  const history = useNavigate()
   function registerProceeding(e) {
-    e.prevent.default()
-
-
+    e.preventDefault()
+    
+    const ata = {
+      titulo : titulo,
+      dataInicio : dataInicio,
+      tipoReuniaoId : tipoReuniaoId,
+      localId : localId,
+      camposAtaReuniao : camposAtaReuniao,
+      ...(dataFim !== "" ? {dataFim : dataFim} : null  )
+    }
+    
+    api.post('/Atas', ata, config ).then(response => {
+        if (response.status === 200) {
+          history('/atas-list')
+        } else {
+          alert('Erro no cadastro da Ata, verifique se os dados estão preenchidos corretamente.')
+        }
+    })
+    
   }
   return (
     <div>
@@ -71,10 +74,8 @@ export function ProceedingsForm() {
           <h1>Nova Ata de Reunião</h1>
           <p>Os campos obrigatórios estão marcados com um asterisco (*)</p>
         </header>
-
         <div className={styles.formContainer}>
           <form>
-
             <h2>Identificação</h2>
             <div className={styles.identidyContainer}>
               <InputText
@@ -84,38 +85,35 @@ export function ProceedingsForm() {
                 label={"Título *"}
                 onChange={e => setTitulo(e.target.value)}
                 required
+                ismandatory={"true"}
               />
 
-
-              <select>
-                <option selected disabled>Local</option>
-              {placesList.map(option =>(
-                <option value={option.value}>{option.label}</option>))}
-              </select>
               <SelectField
                 errorMessage={"Selecione o local da ATA."}
                 id={"local"}
                 label={"Local *"}
                 options={placesList}
-                onChange={e => setLocalId(e.value)}
+                onChange={e => setLocalId(e.target.value)}
                 required
               />
 
               <div className={styles.dateBox}>
                 <InputDate
+                  value={dataInicio}
                   errorMessage={"Escolha a data de início da ATA."}
                   id={"dataInicio"}
                   label={"Data e Horário de Início *"}
                   onChange={e => setDataInicio(e.target.value)}
                   required
-                  isMandatory={"true"}
+                  ismandatory={"true"}
                 />
                 <InputDate
+                  value={dataFim}
                   id={"dataFim"}
                   label={"Data e Horário de Fim"}
                   onChange={e => setDataFim(e.target.value)}
                   required
-                  isMandatory={"false"}
+                  ismandatory={"false"}
                 />
               </div>
 
@@ -124,10 +122,9 @@ export function ProceedingsForm() {
                 id={"reuniao"}
                 label={"Tipo de Reunião *"}
                 options={typesOfMeetingsList}
-                onChange={e => setTipoReuniaoId(e.value)}
+                onChange={e => setTipoReuniaoId(e.target.value)}
                 required
               />
-
             </div>
 
             <div className={styles.meetingContent}>
@@ -139,6 +136,7 @@ export function ProceedingsForm() {
               ) : (
                 <DynamicFields 
                   id={tipoReuniaoId}
+                  setCamposAtaReuniao={setCamposAtaReuniao}
                 />
               )}
             </div>
@@ -147,7 +145,6 @@ export function ProceedingsForm() {
               <Link to="/atas-list">
                 <button>Cancelar</button>
               </Link>
-              {/* // colocar uma span indicando para preencher os dados obrigatórios */}
               <button disabled={isSubmitDisabled} onClick={registerProceeding}>Salvar ATA</button>
             </footer>
           </form>
