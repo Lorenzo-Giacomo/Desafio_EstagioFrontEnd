@@ -12,7 +12,7 @@ export function DeleteAta(props) {
     api.delete(`/Atas/${props.ata}`, config).then(response => {
       if (response.status === 200) {
         setStatePopup(false)
-        props.setAtas(true)
+        props.setDeleted(true)
       }
     })
   }

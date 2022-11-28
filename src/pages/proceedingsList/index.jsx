@@ -16,12 +16,14 @@ const _ = require("lodash");
 export function ProceedingsList() {
 
   const [atas, setAtas] = useState([])
+  const [deleted, setDeleted] = useState(null)
 
   useEffect(() => {
     api.get('/Atas', config).then(response => {
       setAtas(response.data)
     })
-  }, [atas])
+  }, [deleted])
+  console.log(atas)
   
   const groups = _.chain(atas).groupBy('tipoReuniao').map((value, key) => ({
     tipoReuniao: key,
@@ -83,7 +85,7 @@ export function ProceedingsList() {
                               </span>
                             }
                             ata={value.id}
-                            setAtas={setAtas}
+                            setDeleted={setDeleted}
                           />
                         </div>
                       </div>
